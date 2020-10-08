@@ -1,4 +1,23 @@
 # ds-algo-c-plus-plus
 Data Structrues and Algorithms coding starting 08-10-2020
 
-a2oj.com Coding Ladder solving
+FILES USAGE
+
+file.cpp -> coding to be done on this file
+
+input.txt -> for input
+
+output.txt -> for output
+
+script.sh file usage
+    script.sh <argument1> <argument2>
+
+    argument1 -> directory_name
+    argument2 -> filename  ( .cpp will automatically added )
+
+    EXAMPLE : bash script.sh codeforces/A file_name
+        This will create a file named file_name.cpp in dircetory codeforces/A.
+
+template.cpp -> content of this file will automatically be added to file.c after running the script.sh command.
+
+
