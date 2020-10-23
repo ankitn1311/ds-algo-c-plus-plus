@@ -8,5 +8,10 @@ int main() {
 		freopen("input.txt", "r", stdin);
 		freopen("output.txt", "w", stdout);
 	#endif
-	cout<<"testing new day";
+
+	int a;
+	cin>>a;
+
+	cout<<"Your number is:"<<a;
+	
 }	

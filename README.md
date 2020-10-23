@@ -21,3 +21,11 @@ script.sh file usage
 template.cpp -> content of this file will automatically be added to file.c after running the script.sh command.
 
 
+1. Reverse the array.
+    a. Normal Approach:
+        By swapping of elements of either sides.
+    b. Recursive Approach:
+
+2. MIN and MAX in an array using min. no of comparison
+    a. Normal Linear Search.
+    b.
