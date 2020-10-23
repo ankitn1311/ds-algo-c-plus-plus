@@ -20,6 +20,9 @@ Data Structrues and Algorithms coding starting 23-10-2020
 
 template.cpp -> content of this file will automatically be added to file.c after running the script.sh command.
 
+### These are the 450 questions from Love Babar youtube channel recommendations so that's why there is a folder named *fourfifty* and all the questions are there starting **01_a**..**01_b**..**02_c** till maybe **450_a**
+    
+* Here a, b, c after 01,02 denotes different implementations of same question.
 
 ## 1. Reverse the array.
 
