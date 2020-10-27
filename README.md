@@ -36,4 +36,18 @@ template.cpp -> content of this file will automatically be added to file.c after
 * b. Using Recursion. (Tournament Method)
 * c. Compare in Pairs.
 
-## 3.
+## 3. Kth smallest element.
+
+* a. Novice approach (Sorting)
+* b. Min heap approach (HeapSelect)
+* c. Max heap approach
+* d. QuickSelect
+    * Optimization of quick sort algorithm (Pivot till we found kth element)
+* e. Randomized QuickSelect
+    * Using rand() to generate index between l and r swap the element at randomly generated index with the last element.
+* f. Balanced QuickSelect
+
+## 4. Segregate 0's 1's and 2's in an array
+
+* a. Three variable and swap the values accordingly
+* b. Two loops : first for incremting count of 3 variables and 2 for filling the array again according to counter.
