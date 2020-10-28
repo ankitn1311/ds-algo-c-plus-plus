@@ -58,4 +58,8 @@ template.cpp -> content of this file will automatically be added to file.c after
 
 ## 6. Rotate elements of array by one
 
-* a. Store last element in variable and then move all elements by one and add the last element to first position.
+* a. Store last element in variable and then move all elements by one and add the last element to first position. 
+
+## 7. Merge sorted arrays and count elements.
+
+* a. Using unordered_set.
