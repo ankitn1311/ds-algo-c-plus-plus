@@ -51,3 +51,7 @@ template.cpp -> content of this file will automatically be added to file.c after
 
 * a. Three variable and swap the values accordingly
 * b. Two loops : first for incremting count of 3 variables and 2 for filling the array again according to counter.
+
+## 5. Move all negative numbers to beginning
+
+* a. Two Pointer approach.
