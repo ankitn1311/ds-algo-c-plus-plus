@@ -17,4 +17,8 @@
 
 #### 03 - pattern
 
--
+- Pattern question that draws a **inverted half pyramid** of stars.
+
+#### 04 - pattern
+
+- Pattern question that draws a **half pyramid 180deg rotation** of stars.
