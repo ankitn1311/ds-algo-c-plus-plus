@@ -84,19 +84,76 @@ void pattern(int row, int col) {
 	}
 }
 
+int* merge(int left[], int right[]) {
+	cout << "merging..." << endl;
+	// _print(left);
+	// _print(right);
+	// cout << "Left size: " << left.size() << endl;
+	// cout << "Right size: " << right.size() << endl;
+	vector<int> newArr;
+	int i = 0;
+	int j = 0;
+	while (i < left && j < right)) {
+	if (left[i] < right[j]) {
+		newArr.push_back(left[i]);
+		i++;
+	}
+	else {
+		newArr.push_back(right[i]);
+		j++;
+	}
+	}
+	while (i < left.size()) {
+		newArr.push_back(left[i]);
+		i++;
+	}
+	while (j < right.size()) {
+		newArr.push_back(right[i]);
+		j++;
+	}
+	cerr << "New Array: ";
+	_print(newArr);
+	cerr << endl;
+	return newArr;
+}
+
+int* mergeSort(int arr[], int start, int end) {
+	cout << "mergeSort-> ";
+	// for (auto e : arr) {
+	// 	cout << e << " ";
+	// }
+	// cout << endl;
+	// cout << start << " " << end << " ";
+	if (start == end) {
+		int singleElementArr[] = { arr[start] };
+
+		return singleElementArr;
+	}
+
+	int mid = start + (end - start) / 2;
+
+	cout << mid << endl;
+	int left[] = mergeSort(arr, start, mid);
+	int right[] = mergeSort(arr, mid + 1, end);
+
+	return merge(left, right);
+}
+
 int main() {
 	init_code();
 	int t = 1;
 	// int arr[] = { 4,3,1,5,6,2 };
-	vector<int> arr = { 4,3,1,5,6,2 };
+	int arr[] = { 4,3,8,1,9,5,6,2,7 };
 	// cin >> t;
 	while (t--) {
 		// read(row); read(col);
 		// cout << a + b << '\n';
-		selection(arr, arr.size(), 0, 0);
-		for (auto e : arr) {
-			cout << e << " ";
-		}
+		// selection(arr, arr.size(), 0, 0);
+		mergeSort(arr, 0, arr.size() - 1);
+		_print(sortedArray);
+		// for (auto e : sortedArray) {
+		// 	cout << e << " ";
+		// }
 	}
 
 	return 0;
