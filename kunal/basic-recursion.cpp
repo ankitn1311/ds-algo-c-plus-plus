@@ -3,12 +3,14 @@
 using namespace std;
 
 #define pb push_back
-#define fr(a,b) for(int i = a; i < b; i++)
-#define rep(i,a,b) for(int i = a; i < b; i++)
+#define ppb pop_back
+#define mp make_pair
+#define ff first
+#define ss second
 #define MOD 1000000007
+#define PI 3.141592653589793238462
 #define MOD1 998244353
 #define INF 1e18
-#define inf (1LL<<60)
 #define all(x) (x).begin(), (x).end()
 #define prDouble(x) cout << fixed << setprecision(10) << x
 #define triplet pair<ll,pair<ll,ll>>
@@ -47,16 +49,63 @@ void init_code() {
 #ifndef ONLINE_JUDGE
 	freopen("input.txt", "r", stdin);
 	freopen("output.txt", "w", stdout);
-	freopen("Error.txt", "w", stderr);
+	freopen("error.txt", "w", stderr);
 #endif 
+}
+
+void selection(vector<int>& arr, int row, int col, int maxIndex) {
+	if (row < 1) {
+		return;
+	}
+	if (row > col) {
+		if (arr[col] > arr[maxIndex]) {
+			selection(arr, row, col + 1, col);
+		}
+		else selection(arr, row, col + 1, maxIndex);
+	}
+	else {
+		swap(arr[maxIndex], arr[row - 1]);
+		selection(arr, row - 1, 0, 0);
+	}
+}
+void pattern(int row, int col) {
+	if (row < 1) {
+
+		return;
+	}
+	if (row > col) {
+		cout << "* ";
+		pattern(row, col + 1);
+
+	}
+	else {
+		cout << endl;
+		pattern(row - 1, 0);
+	}
+}
+
+string removeChar(string str, char c, int index = 0) {
+	if (index >= str.length()) {
+		return "";
+	}
+	if (str[index] == 'c') {
+		return "" + removeChar(str, 'c', ++index);
+	}
+	return str[index] + removeChar(str, 'c', ++index);
 }
 
 int main() {
 	init_code();
-	int t = 1; cin >> t;
+	int t = 1;
+	// int arr[] = { 4,3,1,5,6,2 };
+	int arr[] = { 4,3,8,1,9,5,6,2,7 };
+	// cin >> t;
+	string str = "ankictcnegci";
 	while (t--) {
-		read(a); read(b);
-		cout << a + b << '\n';
+		// read(row); read(col);
+		// cout << a + b << '\n';
+		cout << removeChar(str, 'c');
 	}
+
 	return 0;
 }
