@@ -84,15 +84,27 @@ void pattern(int row, int col) {
 	}
 }
 
+string removeChar(string str, char c, int index = 0) {
+	if (index >= str.length()) {
+		return "";
+	}
+	if (str[index] == 'c') {
+		return "" + removeChar(str, 'c', ++index);
+	}
+	return str[index] + removeChar(str, 'c', ++index);
+}
+
 int main() {
 	init_code();
 	int t = 1;
 	// int arr[] = { 4,3,1,5,6,2 };
 	int arr[] = { 4,3,8,1,9,5,6,2,7 };
 	// cin >> t;
+	string str = "ankictcnegci";
 	while (t--) {
 		// read(row); read(col);
 		// cout << a + b << '\n';
+		cout << removeChar(str, 'c');
 	}
 
 	return 0;

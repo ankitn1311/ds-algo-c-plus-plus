@@ -1,2 +1,0 @@
-New Array: [ 3 4 ]
-New Array: [ 3 4 3 ]
