@@ -51,12 +51,60 @@ void init_code() {
 #endif 
 }
 
+void mazeWithPathPrint(string path, vector<vector<bool>> maze, int row, int col, vector<vector<int>> paths, int step) {
+	if (!maze[row][col]) {
+		return;
+	}
+	if (row == maze.size() - 1 && col == maze[0].size() - 1) {
+		paths[row][col] = step;
+		for (vector<int> p : paths) {
+			for (int value : p) {
+				cout << value << " ";
+			}
+			cout << endl;
+		}
+		cout << path << "\n";
+		return;
+	}
+
+	maze[row][col] = false;
+	paths[row][col] = step;
+
+	if (row < maze.size() - 1) {
+		mazeWithPathPrint(path + "D", maze, row + 1, col, paths, step + 1);
+	}
+
+	if (col < maze[0].size() - 1) {
+		mazeWithPathPrint(path + "R", maze, row, col + 1, paths, step + 1);
+	}
+
+	if (row > 0) {
+		mazeWithPathPrint(path + "U", maze, row - 1, col, paths, step + 1);
+	}
+
+	if (col > 0) {
+		mazeWithPathPrint(path + "L", maze, row, col - 1, paths, step + 1);
+	}
+
+	maze[row][col] = true;
+	paths[row][col] = 0;
+}
+
 int main() {
 	init_code();
-	int t = 1; cin >> t;
+	int t = 1;
 	while (t--) {
-		read(a); read(b);
-		cout << a + b << '\n';
+		vector<vector<bool>> maze = {
+			{true, true, true},
+			{true, true, true},
+			{true, true, true}
+		};
+		vector<vector<int>> paths = {
+			{0,0,0},
+			{0,0,0},
+			{0,0,0},
+		};
+		mazeWithPathPrint("", maze, 0, 0, paths, 1);
 	}
 	return 0;
 }
