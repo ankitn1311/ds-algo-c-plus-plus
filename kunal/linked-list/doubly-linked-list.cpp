@@ -51,13 +51,16 @@ void init_code() {
 #endif 
 }
 
-class LinkedList {
+class DoublyLinkedList {
 	class Node {
 	public:
 		int val;
 		Node* next;
+		Node* prev;
 		Node(int val) {
 			this->val = val;
+			this->next = NULL;
+			this->prev = NULL;
 		}
 	};
 	Node* head;
@@ -66,9 +69,23 @@ class LinkedList {
 
 
 public:
+	bool isEmpty() {
+		return head == NULL;
+	}
+
 	void insertStart(int val) {
 		Node* node = new Node(val);
+		if (head == NULL) {
+			head = node;
+			head->next = NULL;
+			head->prev = NULL;
+			tail = head;
+			size++;
+			return;
+		}
+		head->prev = node;
 		node->next = head;
+		node->prev = NULL;
 		head = node;
 
 		if (tail == NULL) {
@@ -85,6 +102,7 @@ public:
 
 		Node* node = new Node(val);
 		tail->next = node;
+		node->prev = tail;
 		tail = node;
 		size++;
 	}
@@ -108,6 +126,8 @@ public:
 			temp = temp->next;
 		}
 		Node* node = new Node(val);
+		node->prev = temp;
+		temp->next->prev = node;
 		node->next = temp->next;
 		temp->next = node;
 		size++;
@@ -118,33 +138,28 @@ public:
 			cout << "No elements to delete";
 			return -1;
 		}
-		if (head->next == NULL) {
+		if (head == tail) {
 			tail = NULL;
 		}
 		int val = head->val;
 		head = head->next;
+		head->prev = NULL;
 		size--;
 		return val;
 	}
 
-	bool isEmpty() {
-		return head == NULL;
-	}
 
 	int deleteLast() {
 		if (isEmpty()) {
 			cout << "No elements to delete";
 			return -1;
 		}
-		Node* temp = head;
-		while (temp->next != tail) {
-			temp = temp->next;
-		}
-		if (head->next == NULL) {
+		if (tail == head) {
 			head = NULL;
 		}
 		int val = tail->val;
-		temp->next = NULL;
+		tail = tail->prev;
+		tail->next = NULL;
 		size--;
 		return val;
 	}
@@ -166,19 +181,30 @@ public:
 			temp = temp->next;
 		}
 		int val = temp->next->val;
+
+		temp->next->prev = NULL;
+		temp->next->next->prev = temp;
 		temp->next = temp->next->next;
 		size--;
 		return val;
 	}
 
 	void display() {
-		Node* temp = this->head;
-		while (temp != NULL) {
-			cout << temp->val << "->";
-			temp = temp->next;
+		Node* tempHead = this->head;
+		Node* tempTail = this->tail;
+		while (tempHead != NULL) {
+			cout << tempHead->val << "->";
+			tempHead = tempHead->next;
 		}
 		if (!isEmpty()) {
-			cout << "NULL";
+			cout << "NULL" << endl;
+		}
+		while (tempTail != NULL) {
+			cout << tempTail->val << "->";
+			tempTail = tempTail->prev;
+		}
+		if (!isEmpty()) {
+			cout << "NULL" << endl;
 		}
 	}
 };
@@ -187,7 +213,7 @@ int main() {
 	init_code();
 	int t = 1;
 	while (t--) {
-		LinkedList* list = new LinkedList();
+		DoublyLinkedList* list = new DoublyLinkedList();
 		list->insertStart(4);
 		list->insertStart(5);
 		list->insertStart(6);
@@ -195,7 +221,7 @@ int main() {
 		list->insertLast(1);
 		list->insertAt(5, 3);
 		list->display();
-		cout << endl << list->deleteAt(6) << endl;
+		cout << endl << list->deleteAt(4) << endl;
 		list->display();
 	}
 	return 0;

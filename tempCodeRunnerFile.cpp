@@ -1,6 +1,5 @@
-r<string> empty;
-		return empty;
-	}
-	if (row == 1 && col == 1) {
-		vector<string> singlePath;
-		// cout << path << " ";
+		list->insertStart(5);
+		list->insertStart(6);
+		list->insertLast(2);
+		list->insertLast(1);
+		list->insertAt(5, 3);
