@@ -171,6 +171,20 @@ public:
 		return val;
 	}
 
+	void reverse() {
+		Node* current, * prev, * next;
+		current = head;
+		tail = head;
+		prev = NULL;
+		while (current != NULL) {
+			next = current->next;
+			current->next = prev;
+			prev = current;
+			current = next;
+		}
+		head = prev;
+	}
+
 	void display() {
 		Node* temp = this->head;
 		while (temp != NULL) {
